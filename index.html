@@ -3,197 +3,442 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AZAD GLASS PRO</title>
+<title>Azad Glass Pro</title>
+
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 <style>
-
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:'Segoe UI', Arial, sans-serif;
 }
 
 body{
-background:#0d0d0d;
+background:#050505;
 color:white;
+overflow-x:hidden;
 }
 
+/* HEADER & HERO SECTION */
 header{
-padding:50px 20px;
+background: linear-gradient(135deg, #000000 0%, #111111 100%);
+padding:60px 25px;
 text-align:center;
-background:black;
 border-bottom:3px solid #00d9ff;
+position: relative;
+overflow: hidden;
+}
+
+header::before {
+content: '';
+position: absolute;
+top: -50%;
+left: -50%;
+width: 200%;
+height: 200%;
+background: radial-gradient(circle, rgba(0,217,255,0.1) 0%, transparent 70%);
+pointer-events: none;
 }
 
 header h1{
-font-size:42px;
+font-size:52px;
+font-weight: 900;
 color:#00d9ff;
-margin-bottom:10px;
+margin-bottom:15px;
+letter-spacing: 2px;
+text-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
 }
 
 header p{
-color:#ccc;
+color:#bbb;
 font-size:18px;
 line-height:1.6;
+max-width: 800px;
+margin: 0 auto 25px auto;
 }
 
-.buttons{
+.contact-buttons{
 margin-top:25px;
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
 }
 
-.buttons a{
-display:inline-block;
-margin:8px;
-padding:14px 24px;
+.contact-buttons a{
+text-decoration:none;
+padding:14px 28px;
+border-radius:50px;
+font-weight:bold;
+transition:all 0.4s ease;
+display: flex;
+align-items: center;
+gap: 10px;
+box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.call-btn{
 background:#00d9ff;
 color:black;
-font-weight:bold;
-text-decoration:none;
-border-radius:10px;
-transition:0.3s;
 }
 
-.buttons a:hover{
-transform:scale(1.05);
+.whatsapp-btn{
+background:#25D366;
+color:white;
 }
 
-.gallery{
-padding:30px 15px;
+.contact-buttons a:hover{
+transform:translateY(-3px);
+box-shadow: 0 8px 25px rgba(0, 217, 255, 0.4);
+}
+
+.whatsapp-btn:hover{
+box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+}
+
+/* SERVICES */
+.services{
+padding:80px 20px;
+text-align:center;
+background: #0a0a0a;
+}
+
+.services h2{
+font-size:38px;
+margin-bottom:15px;
+color:#00d9ff;
+position: relative;
+display: inline-block;
+}
+
+.services h2::after{
+content: '';
+width: 50%;
+height: 2px;
+background: #00d9ff;
+position: absolute;
+bottom: -10px;
+left: 25%;
+}
+
+.services p{
+color:#888;
+margin-top: 20px;
+margin-bottom:45px;
+font-size: 16px;
+}
+
+.service-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:25px;
+max-width: 1200px;
+margin: 0 auto;
+}
+
+.service-card{
+background:#121212;
+padding:30px 25px;
+border-radius:16px;
+border:1px solid #222;
+transition:all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.service-card:hover{
+transform:translateY(-8px);
+border-color:#00d9ff;
+box-shadow: 0 10px 30px rgba(0, 217, 255, 0.15);
+}
+
+.service-card h3{
+margin-bottom:15px;
+color:#00d9ff;
+font-size: 20px;
+}
+
+.service-card p{
+color:#aaa;
+font-size:14px;
+line-height:1.7;
+margin: 0;
+}
+
+/* GALLERY WITH CINEMATIC GRID */
+.gallery{
+padding:80px 20px;
+background:#050505;
+}
+
+.gallery h2{
+text-align:center;
+font-size:38px;
+margin-bottom:50px;
+color:#00d9ff;
+}
+
+.gallery-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+max-width: 1200px;
+margin: 0 auto;
 }
 
 .card{
-background:#161616;
-border-radius:15px;
+background:#111;
+border-radius:16px;
 overflow:hidden;
 border:1px solid #222;
-transition:0.3s;
+transition:all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+box-shadow: 0 10px 20px rgba(0,0,0,0.3);
 }
 
 .card:hover{
-transform:translateY(-5px);
+transform:scale(1.03) translateY(-5px);
+border-color:#00d9ff;
+box-shadow: 0 15px 35px rgba(0, 217, 255, 0.2);
+}
+
+.image-container {
+width: 100%;
+height: 380px;
+overflow: hidden;
+position: relative;
+background: #1a1a1a;
 }
 
 .card img{
 width:100%;
-height:320px;
+height:100%;
 object-fit:cover;
 display:block;
+transition: transform 0.6s ease;
+}
+
+.card:hover img {
+transform: scale(1.08);
+}
+
+.card-content {
+padding:20px;
+background: linear-gradient(to top, #111 80%, rgba(17,17,17,0.8));
 }
 
 .card h3{
-padding:18px;
-text-align:center;
+color:#00d9ff;
 font-size:20px;
+margin-bottom: 8px;
+}
+
+.card p{
+color: #aaa;
+font-size: 14px;
+line-height: 1.5;
+}
+
+/* CONTACT SECTION */
+.contact-section{
+padding:80px 20px;
+text-align:center;
+background: linear-gradient(to bottom, #050505, #0f0f0f);
+}
+
+.contact-section h2{
+font-size:38px;
+margin-bottom:15px;
 color:#00d9ff;
 }
 
+.contact-section p{
+color:#ccc;
+margin-bottom:35px;
+line-height:1.7;
+font-size: 16px;
+max-width: 600px;
+margin-left: auto;
+margin-right: auto;
+}
+
+/* FOOTER */
 footer{
-margin-top:30px;
+background:#000;
 padding:25px;
 text-align:center;
-background:black;
-border-top:3px solid #00d9ff;
+border-top:2px solid #00d9ff;
 }
 
 footer p{
-color:#aaa;
-font-size:16px;
+color:#666;
+font-size:14px;
 }
 
+/* MOBILE RESPONSIVENESS */
+@media(max-width:768px){
+header h1{
+font-size:36px;
+}
+header p{
+font-size: 15px;
+}
+.services h2, .gallery h2, .contact-section h2{
+font-size:30px;
+}
+.image-container {
+height: 300px;
+}
+}
 </style>
 </head>
 
 <body>
 
 <header>
-
-<h1>AZAD GLASS PRO</h1>
-
-<p>
-All Types of Glass Work • ACP • Sliding • Toughened Glass • 
-Office Partition • Shower Glass • LED Mirror • Front Elevation
+<h1 data-aos="fade-down" data-aos-duration="1000">AZAD GLASS PRO</h1>
+<p data-aos="fade-up" data-aos-duration="1200">
+All Types of Glass Work • ACP • Sliding • Toughened Glass • Shower Partition • LED Mirror
 </p>
-
-<div class="buttons">
-
-<a href="tel:+917895403783">
-📞 Call Now
-</a>
-
-<a href="https://wa.me/917895403783" target="_blank">
-💬 WhatsApp
-</a>
-
+<div class="contact-buttons" data-aos="zoom-in" data-aos-delay="400">
+<a href="tel:+917895403783" class="call-btn">Call Now</a>
+<a href="https://wa.me/917895403783" target="_blank" class="whatsapp-btn">WhatsApp</a>
 </div>
-
 </header>
 
+<section class="section services">
+<h2 data-aos="fade-up">Our Premium Services</h2>
+<p data-aos="fade-up" data-aos-delay="100">Professional architectural glass and aluminum structural installations.</p>
+
+<div class="service-grid">
+<div class="service-card" data-aos="fade-up" data-aos-delay="100">
+<h3>Toughened Glass</h3>
+<p>High-end structural safety glass designed for robust architectural strength.</p>
+</div>
+<div class="service-card" data-aos="fade-up" data-aos-delay="200">
+<h3>Luxury Facades</h3>
+<p>Modern glass elevation and spider fittings for stunning commercial spaces.</p>
+</div>
+<div class="service-card" data-aos="fade-up" data-aos-delay="300">
+<h3>Shower Enclosures</h3>
+<p>Premium frameless glass partitions tailored for modern luxury bathrooms.</p>
+</div>
+<div class="service-card" data-aos="fade-up" data-aos-delay="400">
+<h3>Designer Mirrors</h3>
+<p>Custom bevelled glass and intelligent high-lumen LED smart mirrors.</p>
+</div>
+</div>
+</section>
+
 <section class="gallery">
+<h2 data-aos="fade-up">Our Work Showcase</h2>
 
-<div class="card">
-<img src="./1.jpg">
-<h3>Modern Glass Building</h3>
+<div class="gallery-grid">
+
+<div class="card" data-aos="fade-up" data-aos-delay="100">
+<div class="image-container">
+<img src="./images/15706.jpg" alt="Commercial Glass Facade">
+</div>
+<div class="card-content">
+<h3>Commercial Glass Facade</h3>
+<p>Premium architectural structural glazing designed for modern multi-story corporate hubs.</p>
+</div>
 </div>
 
-<div class="card">
-<img src="./2.jpg">
-<h3>Designer Glass Door</h3>
+<div class="card" data-aos="fade-up" data-aos-delay="200">
+<div class="image-container">
+<img src="./images/15709.jpg" alt="Frosted Designer Door">
+</div>
+<div class="card-content">
+<h3>Frosted Designer Door</h3>
+<p>Luxury interior frameless glass doors featuring customized geometric gold patterns.</p>
+</div>
 </div>
 
-<div class="card">
-<img src="./3.jpg">
-<h3>Front Elevation Glass</h3>
+<div class="card" data-aos="fade-up" data-aos-delay="300">
+<div class="image-container">
+<img src="./images/15700.jpg" alt="Diamond Bevelled Mirror">
+</div>
+<div class="card-content">
+<h3>Diamond Bevelled Mirror</h3>
+<p>Intricate luxury statement wall feature paneled with premium diamond-cut bevelled glass mirror tiles.</p>
+</div>
 </div>
 
-<div class="card">
-<img src="./4.jpg">
-<h3>Exterior Glass Work</h3>
+<div class="card" data-aos="fade-up" data-aos-delay="400">
+<div class="image-container">
+<img src="./images/15698.jpg" alt="Panoramic Glass Canopy">
+</div>
+<div class="card-content">
+<h3>Panoramic Glass Canopy</h3>
+<p>Heavy-duty laminated architectural glass roof layout supported by custom industrial steel frameworks.</p>
+</div>
 </div>
 
-<div class="card">
-<img src="./5.jpg">
-<h3>LED Mirror Design</h3>
+<div class="card" data-aos="fade-up" data-aos-delay="100">
+<div class="image-container">
+<img src="./images/15669.jpg" alt="Aluminum Sliding System">
+</div>
+<div class="card-content">
+<h3>Aluminum Sliding System</h3>
+<p>Heavy-gauge premium soundproof aluminum profiles integrated with wide panoramic glass setups.</p>
+</div>
 </div>
 
-<div class="card">
-<img src="./6.jpg">
-<h3>Office Glass Partition</h3>
+<div class="card" data-aos="fade-up" data-aos-delay="200">
+<div class="image-container">
+<img src="./images/15672.jpg" alt="Frameless Shower Suite">
+</div>
+<div class="card-content">
+<h3>Frameless Shower Suite</h3>
+<p>Minimalist toughened glass shower partition equipped with solid brass high-shine chrome hardware.</p>
+</div>
 </div>
 
-<div class="card">
-<img src="./7.jpg">
-<h3>Glass Roof Project</h3>
+<div class="card" data-aos="fade-up" data-aos-delay="300">
+<div class="image-container">
+<img src="./images/15677.jpg" alt="Smart LED Mirror">
+</div>
+<div class="card-content">
+<h3>Smart LED Mirror</h3>
+<p>Custom high-definition bathroom vanity mirror styled with custom built-in frosted backlighting panels.</p>
+</div>
 </div>
 
-<div class="card">
-<img src="./8.jpg">
-<h3>Sliding Window</h3>
+<div class="card" data-aos="fade-up" data-aos-delay="400">
+<div class="image-container">
+<img src="./images/15674.jpg" alt="Architectural Glass Railing">
+</div>
+<div class="card-content">
+<h3>Architectural Glass Railing</h3>
+<p>Ultra-clear heavy safety glass stairs balcony railing matched with solid sleek matte black profiles.</p>
+</div>
 </div>
 
-<div class="card">
-<img src="./9.jpg">
-<h3>Bathroom Shower Glass</h3>
 </div>
+</section>
 
-<div class="card">
-<img src="./10.jpg">
-<h3>Commercial Glass Project</h3>
+<section class="contact-section">
+<h2 data-aos="zoom-in">Let's Discuss Your Project</h2>
+<p>Get in touch with Azad Glass Pro today for accurate pricing estimations and world-class commercial execution timelines.</p>
+<div class="contact-box" data-aos="fade-up" data-aos-delay="200">
+<a href="tel:+917895403783" class="call-btn">Call Now</a>
+<a href="https://wa.me/917895403783" target="_blank" class="whatsapp-btn">WhatsApp</a>
 </div>
-
 </section>
 
 <footer>
-
-<p>
-© 2025 AZAD GLASS PRO <br>
-📞 +91 7895403783
-</p>
-
+<p>© 2026 Azad Glass Pro | Designed to Perfection | Phone: +91 7895403783</p>
 </footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  // Initialize the animations
+  AOS.init({
+    duration: 1000,
+    once: true,
+    offset: 100
+  });
+</script>
 
 </body>
 </html>
